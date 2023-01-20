@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:my_app/Constraint.dart';
+import 'package:my_app/Countrieslist.dart';
 import 'package:my_app/Modal/Services/world_states_modal.dart';
 import 'package:pie_chart/pie_chart.dart';
 
@@ -107,13 +108,21 @@ class _StatesDashboardState extends State<StatesDashboard>
                             ),
                           ),
                         ),
-                        Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                            color: Color(0xff1aa260),
-                            borderRadius: BorderRadius.circular(10),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: ((context) => CountriesList())));
+                          },
+                          child: Container(
+                            height: 50,
+                            decoration: BoxDecoration(
+                              color: Color(0xff1aa260),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Center(child: Text("Track Countries")),
                           ),
-                          child: Center(child: Text("Track Countries")),
                         ),
                       ],
                     );
