@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_framework/responsive_wrapper.dart';
+import 'package:responsive_framework/utils/scroll_behavior.dart';
 
 import 'Splash.dart';
 
@@ -13,6 +15,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      builder: (context, widget) => ResponsiveWrapper.builder(
+          defaultScale: true,
+          ClampingScrollWrapper.builder(context, widget!),
+          maxWidth: 1200,
+          maxWidthLandscape: 667,
+          breakpoints: [
+            ResponsiveBreakpoint.resize(480, name: MOBILE),
+            ResponsiveBreakpoint.autoScale(800, name: TABLET),
+            ResponsiveBreakpoint.resize(1000, name: DESKTOP),
+          ]),
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       home: const Splash(),
